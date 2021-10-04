@@ -1,0 +1,61 @@
+﻿html, body, form {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+/* 상단 뷰 */
+.div_top {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: #34495e;
+}
+
+/* 하단 뷰 */
+.div_bottom {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #eee;
+}
+
+table {
+    width: 200px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 100px auto 0;
+}
+
+td {
+    padding: 3px;
+}
+
+img {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+input {
+    width: 100%;
+    border: 1px solid #aaa;
+    font-size: 14px;
+}
+
+#id, #pw {
+    padding: 3px 5px;
+    box-sizing: border-box;
+}
+
+#login {
+    height: 54px;
+    background-color: beige;
+    cursor: pointer;
+}
