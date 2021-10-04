@@ -11,8 +11,8 @@
 
 ## 2. 화면 예시
 
-![ctssvr2 seoul co kr_ChromeNew_DataList aspx](https://user-images.githubusercontent.com/14077108/135869017-7663c462-295c-4a89-87c5-e723b312efd3.png)
 ![localhost_58207_DataList aspx_media=65 date=2021-10-01 pan=5 view=0 random=1124013042](https://user-images.githubusercontent.com/14077108/135869026-7c2dec57-a55e-48e0-8e9a-9d10e96c238c.png)
+![ctssvr2 seoul co kr_ChromeNew_DataList aspx](https://user-images.githubusercontent.com/14077108/135869017-7663c462-295c-4a89-87c5-e723b312efd3.png)
 
 * <b>지면 상세</b>
 
