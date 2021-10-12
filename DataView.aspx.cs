@@ -40,7 +40,7 @@ public partial class DataView : Page
         }
         else
         {
-            // ¸ÅÃ¼
+            // ë§¤ì²´
             if (Request.QueryString["media"] == null || Request.QueryString["media"] == "")
                 strMediaNum = "65";
             else
@@ -49,7 +49,7 @@ public partial class DataView : Page
             strMediaAlpha = (strMediaNum == "70") ? "st" : "ss";
             //strMediaKor = Util.GetMediaName(strMediaNum);
 
-            // °ÔÀçÀÏ
+            // ê²Œì¬ì¼
             if (Request.QueryString["date"] == null || Request.QueryString["date"] == "")
             {
                 strDate = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
@@ -58,7 +58,7 @@ public partial class DataView : Page
             {
                 strDate = Request.QueryString["date"].ToString();
 
-                // '-' ¾È ºÙ¿´À¸¸é
+                // '-' ì•ˆ ë¶™ì˜€ìœ¼ë©´
                 if (strDate.Length == 8)
                     strDate = strDate.Substring(0, 4) + '-' + strDate.Substring(4, 2) + '-' + strDate.Substring(6, 2);
             }
@@ -67,13 +67,13 @@ public partial class DataView : Page
             strMonth = strDate.Substring(5, 2);
             strDay = strDate.Substring(8, 2);
 
-            // ÆÇ
+            // íŒ
             if (Request.QueryString["pan"] == null || Request.QueryString["pan"] == "")
                 strPan = "5";
             else
                 strPan = Request.QueryString["pan"].ToString();
 
-            // ºä (¶óµğ¿À ¹öÆ°)
+            // ë·° (ë¼ë””ì˜¤ ë²„íŠ¼)
             if (Request.QueryString["view"] == null || Request.QueryString["view"] == "")
                 strView = "0";
             else
@@ -92,10 +92,10 @@ public partial class DataView : Page
         string sLocalPath = "";
         string sLockColor = "";
         string sWorkColor = "";
-        string layWorkState = "ÆíÁı : ";
-        string djWorkState = "´ëÁ¶ : ";
-        string adWorkState = "±¤°í : ";
-        string strKpanTime = "°­ÆÇ : ";
+        string layWorkState = "í¸ì§‘ : ";
+        string djWorkState = "ëŒ€ì¡° : ";
+        string adWorkState = "ê´‘ê³  : ";
+        string strKpanTime = "ê°•íŒ : ";
         string sTime_Cmyk = "";
         string strFileInfo = "";
 
@@ -121,7 +121,7 @@ public partial class DataView : Page
 
         sLocalPath = "P:\\Publish\\CTS\\" + m_strPath.Replace("/", "\\");
 
-        // ÀÚµ¿Á¶ÆÇÀÎÁö Ã¼Å©
+        // ìë™ì¡°íŒì¸ì§€ ì²´í¬
         if (sId == Util.JOPANTYPE_AUTO_CODE)
         {
             layWorkState = Util.JOPANTYPE_AUTO_NAME;
@@ -193,14 +193,14 @@ public partial class DataView : Page
         else
             adWorkState += Util.GetUserName(adLock);
 
-        // ÀÚµ¿Á¶ÆÇÀÏ °æ¿ì
+        // ìë™ì¡°íŒì¼ ê²½ìš°
         if (sId == Util.JOPANTYPE_AUTO_CODE || sId == Util.JOPANTYPE_MANUAL_CODE)
         {
             if (dtKpan != "")
             {
-                strKpanTime += get_autocts_kangpandate(sMyun, sJibang); // ÀÚµ¿Á¶ÆÇ °­ÆÇ½Ã°£ Ex) 2017-03-27 09:39:23.000
+                strKpanTime += get_autocts_kangpandate(sMyun, sJibang); // ìë™ì¡°íŒ ê°•íŒì‹œê°„ Ex) 2017-03-27 09:39:23.000
 
-                if (strKpanTime != "00:00" && strKpanTime != "0" && strKpanTime != "°­ÆÇ : ")
+                if (strKpanTime != "00:00" && strKpanTime != "0" && strKpanTime != "ê°•íŒ : ")
                     sWorkColor = "rgb(25, 25, 112);";
                 else
                     sWorkColor = "rgb(109, 109, 109);";
@@ -216,7 +216,7 @@ public partial class DataView : Page
             sTime_Cmyk += "CTP : " + getTimeValue(bTime) + "&nbsp;&nbsp;<br />";
 
         if (sTime_Cmyk.Length > 0)
-            sTime_Cmyk = "[CTPÃâ·Â½Ã°£] <br />" + sTime_Cmyk;
+            sTime_Cmyk = "[CTPì¶œë ¥ì‹œê°„] <br />" + sTime_Cmyk;
 
         string sMonitorName = ConfigurationManager.AppSettings["strMPrev"] + strFileInfo + ".log";
         StringBuilder docWrite = new StringBuilder();
@@ -227,7 +227,7 @@ public partial class DataView : Page
             docWrite.Append("<div class='thumb' style='background-color: " + sLockColor + "'>\n");
 
         docWrite.Append("   <div class='thumb_title'>\n");
-        docWrite.Append("       " + sMyun + "¸é [" + sFile + "]\n");
+        docWrite.Append("       " + sMyun + "ë©´ [" + sFile + "]\n");
         docWrite.Append("   </div>\n");
         docWrite.Append("   <div class='thumb_img'>\n");
 
@@ -270,7 +270,7 @@ public partial class DataView : Page
                 }
                 else
                 {
-                    docWrite.Append("           <img src='" + sViewPath + "?random=" + new Random().Next() + "' onclick=ViewPreview('" + sMyun + "', '" + sId + "', '" + sJibang + "'); />");
+                    docWrite.Append("           <img src='" + sViewPath + "?random=" + new Random().Next() + "' onclick=ViewPreview('" + sMyun + "','" + sId + "','" + sJibang + "'); />");
                 }
             }
             else
@@ -279,7 +279,7 @@ public partial class DataView : Page
                 {
                     sViewPath = m_dapsUrl + "/thumb/" + strDate.Replace("-", "") + "/" + strMediaAlpha + sMyun.PadLeft(2, '0') + "-" + strMonth + strDay + "-" + strPan.PadLeft(2, '0') + Util.GetJibangCode(sJibang, "") + ".jpg";
 
-                    docWrite.Append("           <img src='" + sViewPath + "?random=" + new Random().Next() + "' onclick=ViewPreview('" + sMyun + "', '" + sId + "', '" + sJibang + "'); />");
+                    docWrite.Append("           <img src='" + sViewPath + "?random=" + new Random().Next() + "' onclick=ViewPreview('" + sMyun + "','" + sId + "','" + sJibang + "'); />");
                 }
                 else if (sId == Util.JOPANTYPE_MANUAL_CODE)
                 {
@@ -332,11 +332,11 @@ public partial class DataView : Page
         return docWrite.ToString();
     }
 
-    // ÀÚµ¿Á¶ÆÇ °­ÆÇ½Ã°£
+    // ìë™ì¡°íŒ ê°•íŒì‹œê°„
     public string get_autocts_kangpandate(string page, string jibang)
     {
         string ret = "";
-        string strSQL = "SELECT top 1 d_createtime FROM [DAPS].[dbo].[CTS_JOPANINFO_HISTORY] where id_mechae=" + strMediaNum + " and v_paperdate='" + strDate + "' and n_pan='" + strPan + "' and n_page='" + page + "' and n_jibang='" + jibang + "'  and v_job='°­ÆÇ' order by d_createtime desc";
+        string strSQL = "SELECT top 1 d_createtime FROM [DAPS].[dbo].[CTS_JOPANINFO_HISTORY] where id_mechae=" + strMediaNum + " and v_paperdate='" + strDate + "' and n_pan='" + strPan + "' and n_page='" + page + "' and n_jibang='" + jibang + "'  and v_job='ê°•íŒ' order by d_createtime desc";
         SqlConnection SqlConn = new SqlConnection(m_strConn);
         SqlCommand SqlCmd = new SqlCommand(strSQL, SqlConn);
 
@@ -370,12 +370,12 @@ public partial class DataView : Page
         string strRet = "";
         DateTime dt = Convert.ToDateTime(date);
 
-        strRet = string.Format("{0}½Ã {1}ºĞ", dt.Hour.ToString().PadLeft(2, '0'), dt.Minute.ToString().PadLeft(2, '0'));
+        strRet = string.Format("{0}ì‹œ {1}ë¶„", dt.Hour.ToString().PadLeft(2, '0'), dt.Minute.ToString().PadLeft(2, '0'));
 
         return strRet;
     }
 
-    #region ÆÄÀÏ Ãâ·Â
+    #region íŒŒì¼ ì¶œë ¥
     private void BindFileList(string kpang)
     {
         SqlConnection Conn = new SqlConnection(m_strConn);
@@ -410,7 +410,7 @@ public partial class DataView : Page
     }
     #endregion
 
-    #region ÀüÃ¼ ÆÄÀÏ °Ë»ö
+    #region ì „ì²´ íŒŒì¼ ê²€ìƒ‰
     private void BindFileAllList()
     {
         string strSql = "";
@@ -422,9 +422,9 @@ public partial class DataView : Page
         strSql += " ISNULL(ad_user,0) as ad_user,       myun_code, prtTime_B,            paper_date,        jibang ";
         strSql += " FROM prodarx2005.dbo.V_ONKPANLIST_MONITOR_M WHERE  media=" + strMediaNum + " and paper_date='" + strDate + "' and pan=" + strPan;
         strSql += " union all ";
-        strSql += " select (select CASE V_JOPANTYPE WHEN 'ÀÚµ¿Á¶ÆÇ' THEN '999999' ELSE '888888' END from daps.dbo.CMS_PAPERPLAN B WHERE B.ID_MECHAE ='" + strMediaNum + @"' and V_PAPERDATE=CMS_PAPERPLAN.V_PAPERDATE AND N_PAN=CMS_PAPERPLAN.N_PAN AND N_PAGE=CMS_PAPERPLAN.N_PAGE AND N_JIBANG=CMS_PAPERPLAN.N_JIBANG) as myun_id, N_PAGE as m_myun, N_JIBANG as m_jibang,            '0' as dj_kpan_count,                        '' as PrintTime, ";
+        strSql += " select (select CASE V_JOPANTYPE WHEN 'ìë™ì¡°íŒ' THEN '999999' ELSE '888888' END from daps.dbo.CMS_PAPERPLAN B WHERE B.ID_MECHAE ='" + strMediaNum + @"' and V_PAPERDATE=CMS_PAPERPLAN.V_PAPERDATE AND N_PAN=CMS_PAPERPLAN.N_PAN AND N_PAGE=CMS_PAPERPLAN.N_PAGE AND N_JIBANG=CMS_PAPERPLAN.N_JIBANG) as myun_id, N_PAGE as m_myun, N_JIBANG as m_jibang,            '0' as dj_kpan_count,                        '' as PrintTime, ";
         strSql += " ''    as dj_kpan_date,   '' as ad_kpan_date ,                      0 as      dj_lock_user ,                    0 as  ad_lock_user     ,";
-        strSql += "  v_pagename as     filename ,(select top 1 count(*) from daps.dbo.CTS_JOPANINFO_HISTORY where V_PAPERDATE='" + strDate + "' and n_pan=" + strPan + " and N_PAGE=CMS_PAPERPLAN.N_PAGE and N_JIBANG=CMS_PAPERPLAN.N_JIBANG and V_JOB='°­ÆÇ') as dj_kpang,N_PAN as pan ,      0 as   lay_user,               0 as  dj_user, ";
+        strSql += "  v_pagename as     filename ,(select top 1 count(*) from daps.dbo.CTS_JOPANINFO_HISTORY where V_PAPERDATE='" + strDate + "' and n_pan=" + strPan + " and N_PAGE=CMS_PAPERPLAN.N_PAGE and N_JIBANG=CMS_PAPERPLAN.N_JIBANG and V_JOB='ê°•íŒ') as dj_kpang,N_PAN as pan ,      0 as   lay_user,               0 as  dj_user, ";
         strSql += " 0          as ad_user ,'9999' as myun_code ,'' as  prtTime_B  , replace(v_paperdate,'-','') as paper_date,  N_JIBANG as   jibang        ";
         strSql += " from   daps.dbo.cms_paperplan  WHERE id_mechae=" + strMediaNum + " and v_paperdate='" + strDate + "' and n_pan=" + strPan + " ) a ";
 
@@ -450,7 +450,7 @@ public partial class DataView : Page
     }
     #endregion
 
-    #region ÀüÃ¼ ¸é °³¼ö
+    #region ì „ì²´ ë©´ ê°œìˆ˜
     protected int GetMyunTotalCount(string kpang)
     {
         SqlConnection Conn = null;
@@ -506,7 +506,7 @@ public partial class DataView : Page
     }
     #endregion
 
-    #region ¸é¸í º¸±â
+    #region ë©´ëª… ë³´ê¸°
     public string fncMyunConvert(string code)
     {
         string strMyunName = "";
@@ -522,7 +522,7 @@ public partial class DataView : Page
             }
             catch
             {
-                strMyunName = "Å×½ºÆ®¸é";
+                strMyunName = "í…ŒìŠ¤íŠ¸ë©´";
             }
         }
 
@@ -530,7 +530,7 @@ public partial class DataView : Page
     }
     #endregion
 
-    #region ¸é¸í »ı¼º
+    #region ë©´ëª… ìƒì„±
     private void MakeMyun()
     {
         string strSQL = "SELECT MYUN_CODE, MYUN_NAME FROM MYUNNAME_TBL";
