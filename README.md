@@ -1,4 +1,4 @@
-# newspaper-production-monitoring
+# paper-production-monitoring
 
 - 개발 50%
 - 디자인 50%
