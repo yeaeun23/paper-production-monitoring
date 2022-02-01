@@ -1,5 +1,0 @@
-[2021-08-18 10:15:13] (출력실패) 출력자 : 2018010-IT개발부, 파일경로 : c:\temp\ss29081905xx010101913in.jpg
-System.Net.WebException: 원격 서버에서 (404) 찾을 수 없음 오류를 반환했습니다.
-   위치: System.Net.WebClient.DownloadFile(Uri address, String fileName)
-   위치: Preview.printBtn_Click(Object sender, EventArgs e) 파일 d:\예은\Documents\Visual Studio 2015\Projects\PaperMonitoring\Preview.aspx.cs:줄 317
-[2021-08-18 10:16:48] (출력완료) 출력자 : 2018010-IT개발부, 파일경로 : c:\temp\ss01081905xx010101732in.jpg
